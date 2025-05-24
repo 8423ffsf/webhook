@@ -100,7 +100,7 @@ python app.py
 
 ## API文档
 
-###注意！！数据格式必须是json格式，且只接受post。
+### 注意！！数据格式必须是json格式，且只接受post。
 
 ### 接收Webhook
 
