@@ -70,6 +70,8 @@ python app.py
 
 ## API文档
 
+###注意！！数据格式必须是json格式，
+
 ### 接收Webhook
 
 **Endpoint**  
