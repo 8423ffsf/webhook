@@ -29,8 +29,8 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/8423ffsf/webhook/.git
-cd webhook
+git clone https://github.com/8423ffsf/webhook_mailsend.git
+cd webhook_mailsend
 
 # 安装依赖
 pip install -r requirements.txt
