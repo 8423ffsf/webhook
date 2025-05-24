@@ -34,14 +34,11 @@ cd webhook_mailsend
 
 # 安装依赖
 pip install -r requirements.txt
-
-# 复制环境模板
-cp .env.example .env
 ```
 
 ### 配置说明
 
-编辑`.env`文件：
+编辑`.env`文件（必改）：
 
 ```.env
 # 认证配置
@@ -60,6 +57,39 @@ EMAIL_TO=alerts@yourdomain.com
 REQUIRED_FIELDS=event_type,data.user_id
 ```
 
+编辑`app.py`文件(可选)：
+
+```python
+send_html_email(
+            subject=f"Webhook Alert - {report_time}", #修改subject的值以改变邮件通知的标题
+            content=email_content
+        )
+```
+
+编辑`templates/report.html`(可选)：
+
+```html
+#line110
+<h1>
+    <span>Webhook通知（菜单标题）</span>
+    <span class="badge">{{ event_type }}</span>
+</h1>
+
+#line118~121
+<tr>
+    <th style="width: 30%;">字段（左表头）</th>
+    <th>值（右表头）</th>
+</tr>
+
+#line145~148(页脚文字)
+<div class="footer">
+    <p>此邮件由系统自动发送，请勿直接回复（以下均为页脚文字）</p>
+    <p>© 2023 Your Company Name. All Rights Reserved.</p>
+</div>
+
+
+```
+
 ### 启动服务
 
 ```bash
@@ -70,12 +100,9 @@ python app.py
 
 ## API文档
 
-###注意！！数据格式必须是json格式，
+###注意！！数据格式必须是json格式，且只接受post。
 
 ### 接收Webhook
-
-**Endpoint**  
-`POST /webhook`
 
 **请求头**  
 ```http
@@ -117,7 +144,8 @@ curl -X POST http://localhost:5000/webhook \
 
 1. 修改`templates/report.html`
 2. 调整样式变量：
-```css
+```html
+#line_8~104
 :root {
   --primary-color: #1a73e8; /* 主色调 */
   --text-dark: #2d3748;     /* 正文颜色 */
@@ -139,7 +167,7 @@ SMTP_CONNECTION_POOL_SIZE=5
 
 ## 邮件示例
 
-![邮件示例截图](https://via.placeholder.com/600x400?text=HTML+Email+Preview)
+![邮件示例截图](https://github.com/8423ffsf/webhook_mailsend/blob/main/img/IMG_20250525_034530.jpg)
 
 ## 开发者指南
 
