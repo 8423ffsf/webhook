@@ -98,6 +98,11 @@ python app.py
 ```
 
 默认监听端口：`5000`
+在`app.py`中修改`host`段来改变监听地址，修改`port`段来改变监听地址
+```python
+#line104
+app.run(host='0.0.0.0', port=5000)
+```
 
 ## API文档
 
