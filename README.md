@@ -60,6 +60,7 @@ REQUIRED_FIELDS=event_type,data.user_id
 编辑`app.py`文件(可选)：
 
 ```python
+#line47~50
 send_html_email(
             subject=f"Webhook Alert - {report_time}", #修改subject的值以改变邮件通知的标题
             content=email_content
